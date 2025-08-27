@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +23,7 @@ public class Usuario {
     @Column (name = "num_doc")
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer num_doc;
-    @Column(length = 18)
+    @Column(length = 18)   
     private String nom1;
     @Column(length = 18)
     private String nom2;
