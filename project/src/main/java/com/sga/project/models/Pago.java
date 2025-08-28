@@ -21,5 +21,4 @@ public class Pago {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id_pago;
     private Integer valorAbono;
-
 }

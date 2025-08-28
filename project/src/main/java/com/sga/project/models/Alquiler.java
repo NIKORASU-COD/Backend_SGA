@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,14 +23,15 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table (name = "alquiler")
 public class Alquiler {
-@Id
-@Column (name = "id_alquiler")
-@GeneratedValue (strategy = GenerationType.IDENTITY)
-private Integer id_alquiler;
-private Date fechaRet;
-private Date fechaEnt;
-@ManyToOne (optional = false)
-@JoinColumn (name = "usuarioDoc", nullable = false, foreignKey = @ForeignKey(name = "FK_alquiler_usuario"))
-private Usuario usuario;
-
+    @Id
+    @Column (name = "id_alquiler")
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer id_alquiler;
+    private Date fechaRet;
+    private Date fechaEnt;
+    @ManyToOne (optional = false)
+    @JoinColumn (name = "usuarioDoc", nullable = false, foreignKey = @ForeignKey(name = "FK_alquiler_usuario"))
+    private Usuario usuario;
+    @OneToOne(mappedBy = "alquiler")
+    private Factura factura;
 }
