@@ -32,6 +32,5 @@ public class Alquiler {
     @ManyToOne (optional = false)
     @JoinColumn (name = "usuarioDoc", nullable = false, foreignKey = @ForeignKey(name = "FK_alquiler_usuario"))
     private Usuario usuario;
-    @OneToOne(mappedBy = "alquiler")
-    private Factura factura;
+    
 }
