@@ -1,7 +1,11 @@
 package com.sga.project.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -14,7 +18,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "alquilerarticulos")
 public class AlquilerArticulos {
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_alquiler", nullable = false, foreignKey = @ForeignKey(name = "FK_alquiler_articulosalquiler"))
-    private Alquiler alquiler;
+    @Id
+    @Column (name = "id_alqu")
+    @GeneratedValue ( strategy = GenerationType.IDENTITY)
+    private Integer id_alqu;
+    private boolean estado;
+    private Integer precio;
+    @Column(length = 100)
+    private String Observaciones;
 }

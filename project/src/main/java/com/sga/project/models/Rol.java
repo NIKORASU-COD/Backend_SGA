@@ -20,5 +20,6 @@ public class Rol {
     @Column (name = "id_rol")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_rol;
+    @Column(length = 20)
     private String nomRol;
 }

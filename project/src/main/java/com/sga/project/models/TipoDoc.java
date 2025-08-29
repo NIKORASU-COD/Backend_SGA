@@ -20,5 +20,6 @@ public class TipoDoc {
     @Column(name = "id_tipoDoc")
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id_tipoDoc;
+    @Column (length = 20)
     private String nomDoc;
 }

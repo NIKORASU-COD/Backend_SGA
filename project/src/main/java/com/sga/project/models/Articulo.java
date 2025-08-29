@@ -34,6 +34,7 @@ private String talla;
 @Column (length  = 20)
 private String color;
 private Integer precio;
+
 @ManyToOne (optional = false)
 @JoinColumn (name = "id_categoria", nullable = false, foreignKey = @ForeignKey (name = "FK_articulo_categoria"))
 private Categoria categoria;

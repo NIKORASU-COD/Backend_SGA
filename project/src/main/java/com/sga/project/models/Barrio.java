@@ -20,5 +20,6 @@ public class Barrio {
     @Column(name = "id_barrio")
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id_barrio;
+    @Column (length = 20)
     private String nomBar;
 }

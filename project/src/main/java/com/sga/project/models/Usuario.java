@@ -20,12 +20,12 @@ import lombok.NoArgsConstructor;
 @Table (name = "usuario")
 public class Usuario {
     @Id
-    @Column (name = "num_doc")
+    @Column (name = "numDoc")
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer num_doc;
-    @Column(length = 18)   
+    private Integer numDoc;
+    @Column(length = 20)   
     private String nom1;
-    @Column(length = 18)
+    @Column(length = 20)
     private String nom2;
     @Column(length = 20)
     private String ape2;
@@ -33,17 +33,20 @@ public class Usuario {
     private String ape3;
     @Column(length = 35)
     private String direccion;
-    private Integer numTel;
+    private Long numTel;
     @Column(length = 100)
     private String correoElec;
     @Column(length = 200)
     private String contraseña;
+
     @ManyToOne(optional = false)
     @JoinColumn( name = "id_barrio", nullable = false, foreignKey =  @ForeignKey(name = "FK_usuario_barrio"))
     private Barrio barrio;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_tipoDoc", nullable = false, foreignKey = @ForeignKey(name = "FK_usuarios_documento"))
     private TipoDoc tipoDoc;
+
     @ManyToOne (optional = false)
     @JoinColumn(name = "id_rol", nullable = false, foreignKey = @ForeignKey(name = "FK_usuarios_rol"))
     private Rol rol;
