@@ -13,7 +13,7 @@ import com.sga.project.models.Articulo;
 
     @Override
     public Articulo toArticulo(ArticuloDto articuloDto) {
- if (articuloDto == null){
+if (articuloDto == null){
         return null;
     }
     Articulo articulo = new Articulo();
@@ -74,3 +74,7 @@ import com.sga.project.models.Articulo;
     }
 
 }
+
+
+
+
