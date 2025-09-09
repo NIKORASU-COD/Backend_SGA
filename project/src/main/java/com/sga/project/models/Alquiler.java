@@ -28,6 +28,7 @@ public class Alquiler {
     private Integer id_alquiler;
     private Date fechaRet;
     private Date fechaEnt;
+    private Date fechaAlq;
     @ManyToOne (optional = false)
     @JoinColumn (name = "usuarioDoc", nullable = false, foreignKey = @ForeignKey(name = "FK_alquiler_usuario"))
     private Usuario usuario;

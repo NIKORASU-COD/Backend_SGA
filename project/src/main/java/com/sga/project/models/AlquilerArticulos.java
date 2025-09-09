@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -26,4 +27,6 @@ public class AlquilerArticulos {
     private Integer precio;
     @Column(length = 100)
     private String Observaciones;
+    
+    
 }

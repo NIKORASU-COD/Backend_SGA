@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class AlquilerDto {
+    private Integer Id_alquiler;
     private Date fechaRetiro;
     private Date fechaEntrega;
     private Date fechaAlquiler;
