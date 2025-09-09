@@ -24,6 +24,7 @@ public class Pago {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id_pago;
     private Integer valorAbono;
+    private Integer fechaUltimoAbono;
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_alquiler", nullable = false, foreignKey = @ForeignKey(name = "FK_pago_alquiler"))
     private Alquiler alquiler;

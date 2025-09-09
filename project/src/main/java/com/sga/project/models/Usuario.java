@@ -28,9 +28,9 @@ public class Usuario {
     @Column(length = 20)
     private String nom2;
     @Column(length = 20)
-    private String ape2;
+    private String ape1;
     @Column(length = 20)
-    private String ape3;
+    private String ape2;
     @Column(length = 35)
     private String direccion;
     private Long numTel;
