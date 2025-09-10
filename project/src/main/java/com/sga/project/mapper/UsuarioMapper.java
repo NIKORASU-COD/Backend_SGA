@@ -7,8 +7,8 @@ import com.sga.project.models.Usuario;
 
 public interface UsuarioMapper {
 
- Usuario toUsuario (UsuarioDto usuarioDto);
- UsuarioDto tUsuarioDto (Usuario usuario);
- List <UsuarioDto> toUsuarioDtoList (List <Usuario>usuarios);
- void updateUser (Usuario usuario,UsuarioDto usuarioDto);
+Usuario toUsuario (UsuarioDto usuarioDto);
+UsuarioDto toUsuarioDto (Usuario usuario);
+List <UsuarioDto> toUsuarioDtoList (List <Usuario>usuarios);
+void updateUser (Usuario usuario,UsuarioDto usuarioDto);
 }

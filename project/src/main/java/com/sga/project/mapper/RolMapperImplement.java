@@ -34,7 +34,7 @@ import com.sga.project.models.Rol;
     }
 
     @Override
-    public List<Rol> toRolDtoList(List<Rol> roles) {
+    public List toRolDtoList(List<Rol> roles) {
     if (roles == null) {
         return List.of();
     }

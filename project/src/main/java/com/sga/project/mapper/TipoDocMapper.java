@@ -9,6 +9,6 @@ public interface TipoDocMapper {
 
     TipoDoc toTipoDoc (TipoDocDto tipoDocDto);
     TipoDocDto toTipoDocDto (TipoDoc tipoDoc);
-    List <TipoDoc> toTipoDocDtoList (List <TipoDoc> tipoDocs);
+    List<TipoDocDto> toTipoDocDtoList (List <TipoDoc> tipoDocs);
     void updateTipoDoc (TipoDoc tipoDoc, TipoDocDto tipoDocDto);
 }

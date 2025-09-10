@@ -9,7 +9,7 @@ public interface PagoMapper {
 
     Pago toPago (PagoDto pagoDto);
     PagoDto toPagoDto (Pago pago);
-    List <Pago> toPagoDtoList (List <Pago> pagos);
+    List<PagoDto> toPagoDtoList (List <Pago> pagos);
     void updatePago (Pago pago, PagoDto pagoDto);
 
 }
