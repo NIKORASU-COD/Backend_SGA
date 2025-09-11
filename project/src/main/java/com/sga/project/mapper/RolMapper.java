@@ -9,7 +9,7 @@ public interface RolMapper {
 
     Rol toRol (RolDto rolDto);
     RolDto toRolDto (Rol rol);
-    List <Rol> toRolDtoList (List <Rol> roles);
+    List<RolDto> toRolDtoList (List <Rol> roles);
     void updateRol (Rol rol, RolDto rolDto);
     
 }

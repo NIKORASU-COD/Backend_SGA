@@ -27,7 +27,7 @@ import com.sga.project.models.Usuario;
 
     }
     @Override
-    public UsuarioDto tUsuarioDto(Usuario usuario) {
+    public UsuarioDto toUsuarioDto(Usuario usuario) {
     if (usuario == null) {
         return null;
         
@@ -51,7 +51,7 @@ import com.sga.project.models.Usuario;
     }
     List<UsuarioDto> list = new ArrayList<UsuarioDto>(usuarios.size());
     for(Usuario Usuario : usuarios){
-        list.add(tUsuarioDto(Usuario));
+        list.add(toUsuarioDto(Usuario));
     }
     return list;
     }

@@ -37,7 +37,7 @@ import com.sga.project.models.Pago;
 }
 
     @Override
-    public List<Pago> toPagoDtoList(List<Pago> pagos) {
+    public List toPagoDtoList(List<Pago> pagos) {
     if (pagos == null) {
         return List.of();
     }
