@@ -34,8 +34,9 @@ public class AlquilerArticulos {
 
     private boolean estado;
     private Integer precio;
+    
     @Column(length = 100)
-    private String Observaciones;
+    private String observaciones;
 
     
 }
