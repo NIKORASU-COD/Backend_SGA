@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class AlquilerArticulosDto {
- @NotNull (message = "El ID del Alquiler no puede estar vacío")
+    @NotNull
  private Integer alquilerId;
 
- @NotNull (message = "El ID del Articulo no puede estar vacío")
+ @NotNull
  private Integer articuloId;
 
 

@@ -23,16 +23,19 @@ public UsuarioDto getUsuario(Integer numDocumento) {
 Usuario usuario = ur.findById(numDocumento).get();
 return um.toUsuarioDto(usuario);
 }
+
 @Override
 public UsuarioDto saveUsuario(UsuarioDto UsuarioDto) {
 Usuario usuario = um.toUsuario(UsuarioDto);
 return um.toUsuarioDto(ur.save(usuario));
 }
+
 @Override
 public List<UsuarioDto> getUsuario() {
 List <Usuario> usuario = ur.findAll();
 return um.toUsuarioDtoList(usuario);
 }
+
 @Override
 public UsuarioDto deleteUsuario(Integer numDocumento) {
 Usuario usuario = ur.findById(numDocumento).get();

@@ -8,7 +8,6 @@ import com.sga.project.models.AlquilerArticulos;
 import com.sga.project.models.AlquilerArticulosId;
 
 public interface AlquilerArticuloRepository extends JpaRepository <AlquilerArticulos, AlquilerArticulosId>{
-
     List<AlquilerArticulos> findByAlquilerId (Integer alquilerId);
     List<AlquilerArticulos> findByArticuloId (Integer articuloId);
 }
