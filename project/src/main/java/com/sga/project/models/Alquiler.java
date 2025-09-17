@@ -27,7 +27,7 @@ public class Alquiler {
     @Id
     @Column (name = "id_alquiler")
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer id_alquiler;
+    private Integer id;
     private Date fechaRet;
     private Date fechaEnt;
     private Date fechaAlq;
