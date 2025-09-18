@@ -27,7 +27,7 @@ public class Articulo {
 @Id
 @Column (name = "id_articulo")
 @GeneratedValue (strategy = GenerationType.IDENTITY)
-private Integer id_articulo;
+private Integer id;
 @Column (length = 30)
 private String nomArt;
 @Column (length = 15)

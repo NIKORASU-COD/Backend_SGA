@@ -16,7 +16,7 @@ import com.sga.project.models.Alquiler;
         return null;
     }
     Alquiler alquiler = new Alquiler();
-    alquiler.setId_alquiler(alquilerDto.getId_alquiler());
+    alquiler.setId(alquilerDto.getId_alquiler());
     alquiler.setFechaRet(alquilerDto.getFechaRetiro());
     alquiler.setFechaEnt(alquilerDto.getFechaEntrega());
     alquiler.setFechaAlq(alquiler.getFechaAlq());
@@ -30,7 +30,7 @@ import com.sga.project.models.Alquiler;
         return null;
     }
     AlquilerDto alquilerDto = new AlquilerDto();
-    alquilerDto.setId_alquiler(alquiler.getId_alquiler());
+    alquilerDto.setId_alquiler(alquiler.getId());
     alquilerDto.setFechaRetiro(alquiler.getFechaRet());
     alquilerDto.setFechaEntrega(alquiler.getFechaEnt());
     alquilerDto.setFechaAlquiler(alquiler.getFechaAlq());
@@ -56,7 +56,7 @@ import com.sga.project.models.Alquiler;
         if (alquilerDto == null){
             return;
         }
-        alquiler.setId_alquiler(alquilerDto.getId_alquiler());
+        alquiler.setId(alquilerDto.getId_alquiler());
         alquiler.setFechaAlq(alquilerDto.getFechaAlquiler());
         alquiler.setFechaEnt(alquilerDto.getFechaEntrega());
         alquiler.setFechaRet(alquilerDto.getFechaRetiro());

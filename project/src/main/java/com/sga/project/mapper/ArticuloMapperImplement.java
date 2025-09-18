@@ -17,7 +17,7 @@ if (articuloDto == null){
         return null;
     }
     Articulo articulo = new Articulo();
-    articulo.setId_articulo(articuloDto.getIdArt());
+    articulo.setId(articuloDto.getIdArt());
     articulo.setGenero(articuloDto.getGeneroArt());
     articulo.setTalla(articuloDto.getTallaArt());
     articulo.setColor(articuloDto.getColorArt());
@@ -35,7 +35,7 @@ if (articuloDto == null){
         return null;
     }
     ArticuloDto articuloDto = new ArticuloDto();
-    articuloDto.setIdArt(articulo.getId_articulo());
+    articuloDto.setIdArt(articulo.getId());
     articuloDto.setGeneroArt(articulo.getGenero());
     articuloDto.setTallaArt(articulo.getTalla());
     articuloDto.setColorArt(articulo.getColor());
@@ -65,7 +65,7 @@ if (articuloDto == null){
             return;
 
         }
-        articulo.setId_articulo(articuloDto.getIdArt());
+        articulo.setId(articuloDto.getIdArt());
         articulo.setGenero(articuloDto.getGeneroArt());
         articulo.setTalla(articuloDto.getTallaArt());
         articulo.setColor(articuloDto.getColorArt());

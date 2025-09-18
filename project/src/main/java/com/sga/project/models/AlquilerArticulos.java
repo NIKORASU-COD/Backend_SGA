@@ -32,10 +32,11 @@ public class AlquilerArticulos {
     @JoinColumn (name = "idArticulos", foreignKey = @ForeignKey (name = "FK_AlquilerArticulos_Articulo"))
     private Articulo articulo;
 
-    private boolean estado;
+    private Boolean estado;
     private Integer precio;
+    
     @Column(length = 100)
-    private String Observaciones;
+    private String observaciones;
 
     
 }
