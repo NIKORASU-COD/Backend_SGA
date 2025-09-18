@@ -14,9 +14,10 @@ public class ArticuloController {
 
     @Autowired
     private ArticuloRepositoryes artiRepo;
+    @Autowired
     private ArticuloService artiServi;
 
-    public
-
-    // 
+    public ArticuloController(ArticuloService articuloService){
+        this.artiServi = articuloService;
+    }
 }
