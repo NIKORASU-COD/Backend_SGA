@@ -25,7 +25,7 @@ public class Pago {
     private Integer id_pago;
     private Integer valorAbono;
     private Integer fechaUltimoAbono;
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "id_alquiler", nullable = false, foreignKey = @ForeignKey(name = "FK_pago_alquiler"))
     private Alquiler alquiler;
 }

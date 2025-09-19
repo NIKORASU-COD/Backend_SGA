@@ -6,10 +6,26 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.sga.project.dto.UsuarioDto;
+import com.sga.project.models.Barrio;
+import com.sga.project.models.Rol;
+import com.sga.project.models.TipoDoc;
 import com.sga.project.models.Usuario;
+import com.sga.project.repositoryes.BarrioRepositoryes;
+import com.sga.project.repositoryes.RolRepositoryes;
+import com.sga.project.repositoryes.TipoDocRepositoryes;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Component class UsuarioMapperImplement implements UsuarioMapper {
+    private final BarrioRepositoryes barRep;
+    private final RolRepositoryes rolRep;
+    private final TipoDocRepositoryes tipRe;
 
+    public UsuarioMapperImplement(BarrioRepositoryes barRep, RolRepositoryes rolRep, TipoDocRepositoryes tipRe){
+        this.barRep = barRep;
+        this.rolRep = rolRep;
+        this.tipRe = tipRe;
+    }
     @Override
     public Usuario toUsuario(UsuarioDto usuarioDto) {
     if (usuarioDto == null) {
@@ -23,8 +39,21 @@ import com.sga.project.models.Usuario;
     usuario.setApe1(usuarioDto.getApellido1());
     usuario.setApe2(usuarioDto.getApellido2());
     usuario.setNumTel(usuarioDto.getTele());
-    return usuario;
+    usuario.setCorreoElec(usuarioDto.getCorreoElectronico());
+    usuario.setContraseña(usuarioDto.getContra());
+    
+    Barrio barrio = barRep.findById(usuarioDto.getIdBarrio())
+    .orElseThrow(() -> new EntityNotFoundException("barrio no encontrado"));
+    usuario.setBarrio(barrio);
 
+    Rol rol = rolRep.findById(usuarioDto.getIdRol())
+    .orElseThrow(() -> new EntityNotFoundException("rol no encontrado"));
+    usuario.setRol(rol);
+
+    TipoDoc tipoDoc = tipRe.findById(usuarioDto.getIdTipoDoc())
+    .orElseThrow(() -> new EntityNotFoundException("tipo de documento no encontrado mi papacho"));
+    usuario.setTipoDoc(tipoDoc);
+    return usuario;
     }
     
     @Override
@@ -41,6 +70,9 @@ import com.sga.project.models.Usuario;
     usuarioDto.setApellido1(usuario.getApe1());
     usuarioDto.setApellido2(usuario.getApe2());
     usuarioDto.setTele(usuario.getNumTel());
+    usuarioDto.setCorreoElectronico(usuario.getCorreoElec());
+
+    usuarioDto.setContra(usuario.getContraseña());
     return usuarioDto;
     }
 
@@ -69,6 +101,8 @@ import com.sga.project.models.Usuario;
     usuario.setApe1(usuarioDto.getApellido1());
     usuario.setApe2(usuarioDto.getApellido2());
     usuario.setNumTel(usuarioDto.getTele());
+    usuario.setCorreoElec(usuarioDto.getCorreoElectronico());
+    usuario.setContraseña(usuarioDto.getContra());
     }
 
 

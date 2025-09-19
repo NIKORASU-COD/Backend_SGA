@@ -38,15 +38,15 @@ public class Usuario {
     @Column(length = 200)
     private String contraseña;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn( name = "id_barrio", nullable = false, foreignKey =  @ForeignKey(name = "FK_usuario_barrio"))
     private Barrio barrio;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "id_tipoDoc", nullable = false, foreignKey = @ForeignKey(name = "FK_usuarios_documento"))
     private TipoDoc tipoDoc;
 
-    @ManyToOne (optional = false)
+    @ManyToOne
     @JoinColumn(name = "id_rol", nullable = false, foreignKey = @ForeignKey(name = "FK_usuarios_rol"))
     private Rol rol;
 }
