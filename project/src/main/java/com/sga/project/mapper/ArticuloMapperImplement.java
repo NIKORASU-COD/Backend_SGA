@@ -7,9 +7,18 @@ import org.springframework.stereotype.Component;
 
 import com.sga.project.dto.ArticuloDto;
 import com.sga.project.models.Articulo;
+import com.sga.project.models.Categoria;
+import com.sga.project.repositoryes.CategoriaRepositoryes;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Component class ArticuloMapperImplement implements ArticuloMapper{
 
+    private final CategoriaRepositoryes cateRepo;
+
+    public ArticuloMapperImplement (CategoriaRepositoryes cateRepo) {
+        this.cateRepo = cateRepo;
+    }
 
     @Override
     public Articulo toArticulo(ArticuloDto articuloDto) {
@@ -23,25 +32,32 @@ if (articuloDto == null){
     articulo.setColor(articuloDto.getColorArt());
     articulo.setNomArt(articuloDto.getNombre());
     articulo.setPrecio(articuloDto.getPrecioArt());
+
+    Categoria cate = cateRepo.findById(articuloDto.getIdCategoria())
+        .orElseThrow(() -> new EntityNotFoundException("Categoria no encontrada"));
+        articulo.setCategoria(cate);
+
     return articulo;
 
     }
 
-    
+    // 
 
     @Override
     public ArticuloDto toArticuloDto(Articulo articulo) {
     if (articulo == null){
         return null;
     }
-    ArticuloDto articuloDto = new ArticuloDto();
-    articuloDto.setIdArt(articulo.getId());
-    articuloDto.setGeneroArt(articulo.getGenero());
-    articuloDto.setTallaArt(articulo.getTalla());
-    articuloDto.setColorArt(articulo.getColor());
-    articuloDto.setNombre(articulo.getNomArt());
-    articulo.setPrecio(articulo.getPrecio());
-    return articuloDto;
+    return new ArticuloDto(
+        articulo.getId(),
+        articulo.getColor(),
+        articulo.getGenero(),
+        articulo.getNomArt(),
+        articulo.getTalla(),
+        articulo.getPrecio(),
+
+        articulo.getCategoria() != null ? articulo.getCategoria().getId_categoria() : null
+    );
     }
 
     @Override
@@ -57,8 +73,6 @@ if (articuloDto == null){
 
 }
 
-
-
     @Override
     public void updateArticulos(Articulo articulo, ArticuloDto articuloDto) {
         if (articuloDto == null) {
@@ -71,6 +85,7 @@ if (articuloDto == null){
         articulo.setColor(articuloDto.getColorArt());
         articulo.setNomArt(articuloDto.getNombre());
         articulo.setPrecio(articuloDto.getPrecioArt());
+        
     }
 
 }

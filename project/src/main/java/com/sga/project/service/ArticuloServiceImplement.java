@@ -19,7 +19,7 @@ public class ArticuloServiceImplement implements ArticuloService{
     private ArticuloMapper amt;
 
     @Override
-    public ArticuloDto getArticulo(Integer idArt) {
+    public ArticuloDto getArticuloById(Integer idArt) {
     Articulo articulo = art.findById(idArt).get();
     return amt.toArticuloDto(articulo);
     }
@@ -31,16 +31,14 @@ public class ArticuloServiceImplement implements ArticuloService{
     }
 
     @Override
-    public List<ArticuloDto> getArticulo() {
+    public List<ArticuloDto> getListArticulos() {
     List <Articulo> articulos = art.findAll();
     return amt.toArticuloList(articulos);
     }
 
     @Override
-    public ArticuloDto deleteArticulo(Integer Artid) {
-    Articulo articulo = art.findById(Artid).get();
-    art.delete(articulo);
-    return amt.toArticuloDto(articulo);
+    public void deleteArticulo(Integer Artid) {
+    art.deleteById(Artid);
     }
 
     @Override

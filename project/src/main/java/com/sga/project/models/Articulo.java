@@ -36,6 +36,7 @@ private String genero;
 private String talla;
 @Column (length  = 20)
 private String color;
+
 private Integer precio;
 
 @ManyToOne 

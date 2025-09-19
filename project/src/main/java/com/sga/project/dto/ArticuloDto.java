@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 public class ArticuloDto {
     
     private Integer idArt;
-    
     private String generoArt;
     private String tallaArt;
     private String colorArt;
     private String nombre;
     private Integer precioArt;
+    private Integer idCategoria;
 }
