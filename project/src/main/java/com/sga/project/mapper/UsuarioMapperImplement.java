@@ -104,6 +104,4 @@ import jakarta.persistence.EntityNotFoundException;
     usuario.setCorreoElec(usuarioDto.getCorreoElectronico());
     usuario.setContraseña(usuarioDto.getContra());
     }
-
-
-    }
+}

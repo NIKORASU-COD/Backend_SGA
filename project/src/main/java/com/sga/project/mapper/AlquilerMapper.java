@@ -10,5 +10,5 @@ public interface AlquilerMapper {
     AlquilerDto toAlquilerDto (Alquiler alquiler);
     List <AlquilerDto> toAlquilerDtoList (List <Alquiler> alquileres); 
     void updateAlquiler (Alquiler alquiler,AlquilerDto alquilerDto);
-
+    
 }
