@@ -17,7 +17,7 @@ private Integer alquilerId;
 private Integer articuloId;
 
 private Boolean estado;
-  
+
 @NotNull
 private Integer precio;
 
