@@ -19,7 +19,7 @@ public class PagoServiceImplement implements PagoService {
     private PagoMapper pm;
 
     @Override
-    public PagoDto getPago(Integer idPago) {
+    public PagoDto getPagoById(Integer idPago) {
     Pago pago = pr.findById(idPago).get();
     return pm.toPagoDto(pago);
     }
@@ -31,7 +31,7 @@ public class PagoServiceImplement implements PagoService {
     }
 
     @Override
-    public List<PagoDto> getPago() {
+    public List<PagoDto> getListPago() {
     List <Pago> pagos = pr.findAll();
     return (List<PagoDto>) pm.toPagoDtoList(pagos);
     }
