@@ -73,21 +73,6 @@ if (articuloDto == null){
 
 }
 
-    @Override
-    public void updateArticulos(Articulo articulo, ArticuloDto articuloDto) {
-        if (articuloDto == null) {
-            return;
-
-        }
-        articulo.setId(articuloDto.getIdArt());
-        articulo.setGenero(articuloDto.getGeneroArt());
-        articulo.setTalla(articuloDto.getTallaArt());
-        articulo.setColor(articuloDto.getColorArt());
-        articulo.setNomArt(articuloDto.getNombre());
-        articulo.setPrecio(articuloDto.getPrecioArt());
-        
-    }
-
 }
 
 

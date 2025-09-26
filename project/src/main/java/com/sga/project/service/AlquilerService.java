@@ -7,7 +7,7 @@ import com.sga.project.dto.AlquilerDto;
 
 public interface AlquilerService {
 
-public AlquilerDto getAlquiler (Integer Id_alquiler);
+public AlquilerDto getAlquilerById (Integer Id_alquiler);
 public AlquilerDto saveAlquiler (AlquilerDto alquilerDto);
 public List <AlquilerDto> getAlquiler ();
 public AlquilerDto deleteAlquiler (Integer alquiler_id);

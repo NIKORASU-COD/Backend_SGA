@@ -19,12 +19,12 @@ public class AlquilerServiceImplement implements AlquilerService{
     private AlquilerMapper am;
     
     @Override
-    public AlquilerDto getAlquiler(Integer Id_alquiler) {
+    public AlquilerDto getAlquilerById(Integer Id_alquiler) {
         Alquiler alquiler = ar.findById (Id_alquiler).get();
         return am.toAlquilerDto(alquiler);
         
     }
-
+    
     @Override
     public AlquilerDto saveAlquiler(AlquilerDto alquilerDto) {
     Alquiler alquiler = am.toAlquiler(alquilerDto);

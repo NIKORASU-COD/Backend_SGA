@@ -8,7 +8,7 @@ import com.sga.project.models.Alquiler;
 public interface AlquilerMapper {
     Alquiler toAlquiler (AlquilerDto alquilerDto);
     AlquilerDto toAlquilerDto (Alquiler alquiler);
-    List <AlquilerDto> toAlquilerDtoList (List <Alquiler> alquileres); 
-    void updateAlquiler (Alquiler alquiler,AlquilerDto alquilerDto);
+    List <AlquilerDto> toAlquilerDtoList (List<Alquiler> alquileres);
+
     
 }

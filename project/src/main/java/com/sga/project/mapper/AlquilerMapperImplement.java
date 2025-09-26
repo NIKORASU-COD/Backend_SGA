@@ -7,8 +7,17 @@ import org.springframework.stereotype.Component;
 
 import com.sga.project.dto.AlquilerDto;
 import com.sga.project.models.Alquiler;
+import com.sga.project.models.Usuario;
+import com.sga.project.repositoryes.UsuarioRepositoryes;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Component class AlquilermapperImplement implements AlquilerMapper{
+
+    private final UsuarioRepositoryes usuRepo;
+    public AlquilermapperImplement (UsuarioRepositoryes usuRepo) {
+        this.usuRepo = usuRepo;
+    }
 
     @Override
     public Alquiler toAlquiler(AlquilerDto alquilerDto) {
@@ -20,6 +29,11 @@ import com.sga.project.models.Alquiler;
     alquiler.setFechaRet(alquilerDto.getFechaRetiro());
     alquiler.setFechaEnt(alquilerDto.getFechaEntrega());
     alquiler.setFechaAlq(alquiler.getFechaAlq());
+    
+    Usuario usu = usuRepo.findById(alquilerDto.getNumDocUsuario())
+    .orElseThrow(()-> new EntityNotFoundException("Usuario no encontrado"));
+    alquiler.setUsuario(usu);
+
     return alquiler;
 
     }
@@ -29,12 +43,14 @@ import com.sga.project.models.Alquiler;
     if (alquiler == null){
         return null;
     }
-    AlquilerDto alquilerDto = new AlquilerDto();
-    alquilerDto.setId_alquiler(alquiler.getId());
-    alquilerDto.setFechaRetiro(alquiler.getFechaRet());
-    alquilerDto.setFechaEntrega(alquiler.getFechaEnt());
-    alquilerDto.setFechaAlquiler(alquiler.getFechaAlq());
-    return alquilerDto;
+    return new AlquilerDto (
+        alquiler.getId(),
+        alquiler.getFechaAlq(),
+        alquiler.getFechaEnt(),
+        alquiler.getFechaRet(),
+
+        alquiler.getUsuario() != null ? alquiler.getUsuario().getNumDoc() : null
+    );
     }
 
     @Override
@@ -50,17 +66,6 @@ import com.sga.project.models.Alquiler;
 
     }
 
-    @Override
-    public void updateAlquiler(Alquiler alquiler, AlquilerDto alquilerDto) {
-
-        if (alquilerDto == null){
-            return;
-        }
-        alquiler.setId(alquilerDto.getId_alquiler());
-        alquiler.setFechaAlq(alquilerDto.getFechaAlquiler());
-        alquiler.setFechaEnt(alquilerDto.getFechaEntrega());
-        alquiler.setFechaRet(alquilerDto.getFechaRetiro());
-    }
 
 }
 

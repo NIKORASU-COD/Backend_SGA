@@ -9,7 +9,7 @@ public interface ArticuloMapper {
 
     Articulo toArticulo (ArticuloDto articuloDto);
     ArticuloDto toArticuloDto (Articulo articulo);
-    List <ArticuloDto> toArticuloList (List <Articulo> articulos);
-    void updateArticulos (Articulo articulo,ArticuloDto articuloDto);
+    List<ArticuloDto> toArticuloList (List <Articulo> articulos);
+
 
 }
