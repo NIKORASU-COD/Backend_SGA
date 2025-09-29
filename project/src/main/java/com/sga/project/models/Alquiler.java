@@ -40,7 +40,9 @@ public class Alquiler {
     @NotNull
     private Date fechaAlq;
 
+
     @ManyToOne (fetch = FetchType.LAZY)
+
     @JoinColumn (name = "usuarioDoc", nullable = false, foreignKey = @ForeignKey(name = "FK_alquiler_usuario"))
     private Usuario usuario;
 

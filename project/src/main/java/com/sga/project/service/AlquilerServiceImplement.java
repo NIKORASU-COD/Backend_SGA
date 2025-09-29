@@ -27,7 +27,7 @@ public class AlquilerServiceImplement implements AlquilerService{
     Alquiler alquiGuardado = alquiRepo.save(alquiler);
     return alquiMap.toAlquilerDto(alquiGuardado);
     }
-
+    
     @Override
     public AlquilerDto getAlquilerById (Integer idAlquiler) {
         return alquiRepo.findById(idAlquiler).map(alquiMap::toAlquilerDto).orElseThrow(() -> new EntityNotFoundException("Alquiler no encontrado"));

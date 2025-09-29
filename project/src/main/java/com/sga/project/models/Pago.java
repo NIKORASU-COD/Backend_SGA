@@ -31,7 +31,9 @@ public class Pago {
 
     private Integer fechaUltimoAbono;
 
+
     @ManyToOne (fetch = FetchType.LAZY)
+
     @JoinColumn(name = "id_alquiler", nullable = false, foreignKey = @ForeignKey(name = "FK_pago_alquiler"))
     private Alquiler alquiler;
 }
