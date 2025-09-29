@@ -9,7 +9,7 @@ public interface PagoService {
 public PagoDto getPago (Integer idPago);
 public PagoDto savePago (PagoDto pagoDto);
 public List<PagoDto> getPago ();
-public PagoDto deletePago(Integer Pagoid);
-public PagoDto updatePago (Integer pago, PagoDto pagoDto);
+public void deletePago(Integer Pagoid);
+public PagoDto updatePago (PagoDto pagoDto);
 
 }

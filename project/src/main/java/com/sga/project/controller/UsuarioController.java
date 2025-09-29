@@ -59,13 +59,13 @@ public class UsuarioController {
 
     @GetMapping("/listandoandoputos")
     public ResponseEntity<List<UsuarioDto>> listartodos(){
-        return ResponseEntity.ok(us.getUsuario());
+        return ResponseEntity.ok(us.getUsuarios());
     }
     
     @PutMapping("actualizar/{id}")
     public ResponseEntity<UsuarioDto> actualizar(@PathVariable Integer id, @Valid @RequestBody UsuarioDto usuarioDto) {
         usuarioDto.setNumDocumento(id);
-        UsuarioDto actualizar = us.updateUsuario(id, usuarioDto);
+        UsuarioDto actualizar = us.updateUsuario(usuarioDto);
         return ResponseEntity.ok(actualizar);
     }
 }

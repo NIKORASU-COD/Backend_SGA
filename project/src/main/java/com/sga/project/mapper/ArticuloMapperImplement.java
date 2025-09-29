@@ -1,15 +1,10 @@
 package com.sga.project.mapper;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Component;
-
 import com.sga.project.dto.ArticuloDto;
 import com.sga.project.models.Articulo;
 import com.sga.project.models.Categoria;
 import com.sga.project.repositoryes.CategoriaRepositoryes;
-
 import jakarta.persistence.EntityNotFoundException;
 
 @Component class ArticuloMapperImplement implements ArticuloMapper{
@@ -41,7 +36,7 @@ if (articuloDto == null){
 
     }
 
-    // 
+    
 
     @Override
     public ArticuloDto toArticuloDto(Articulo articulo) {
@@ -58,34 +53,6 @@ if (articuloDto == null){
 
         articulo.getCategoria() != null ? articulo.getCategoria().getId_categoria() : null
     );
-    }
-
-    @Override
-    public List<ArticuloDto> toArticuloList(List<Articulo> articulos) {
-    if (articulos == null){
-        return List.of();
-    }
-    List <ArticuloDto> list = new ArrayList<ArticuloDto>(articulos.size());
-    for(Articulo Articulo : articulos){
-        list.add(toArticuloDto(Articulo));
-    }
-    return list;
-
-}
-
-    @Override
-    public void updateArticulos(Articulo articulo, ArticuloDto articuloDto) {
-        if (articuloDto == null) {
-            return;
-
-        }
-        articulo.setId(articuloDto.getIdArt());
-        articulo.setGenero(articuloDto.getGeneroArt());
-        articulo.setTalla(articuloDto.getTallaArt());
-        articulo.setColor(articuloDto.getColorArt());
-        articulo.setNomArt(articuloDto.getNombre());
-        articulo.setPrecio(articuloDto.getPrecioArt());
-        
     }
 
 }

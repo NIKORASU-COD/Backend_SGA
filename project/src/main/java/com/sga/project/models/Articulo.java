@@ -2,10 +2,13 @@ package com.sga.project.models;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,21 +31,26 @@ public class Articulo {
 @Column (name = "id_articulo")
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 private Integer id;
-@Column (length = 30)
+
+@Column (length = 50, nullable = false)
 private String nomArt;
-@Column (length = 15)
+
+@Column (length = 50)
 private String genero;
-@Column (length = 5)
+
+@Column (length = 10)
 private String talla;
-@Column (length  = 20)
+
+@Column (length  = 50)
 private String color;
 
+@Column (nullable = false)
 private Integer precio;
 
-@ManyToOne 
+@ManyToOne (fetch = FetchType.LAZY)
 @JoinColumn (name = "id_categoria", nullable = false, foreignKey = @ForeignKey (name = "FK_articulo_categoria"))
 private Categoria categoria;
 
-@OneToMany (mappedBy = "articulo")
-private List<AlquilerArticulos> asignacionArt;
+@OneToMany (mappedBy = "articulo", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<AlquilerArticulos> asignacionArt = new ArrayList<>();
 }
