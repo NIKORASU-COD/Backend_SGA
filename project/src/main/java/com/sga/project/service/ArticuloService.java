@@ -10,5 +10,4 @@ public ArticuloDto getArticuloById (Integer idArt);
 public ArticuloDto saveArticulo (ArticuloDto articuloDto);
 public List <ArticuloDto> getListArticulos ();
 public void deleteArticulo (Integer idArt);
-public ArticuloDto updateArticulo (ArticuloDto articuloDto);
 }
