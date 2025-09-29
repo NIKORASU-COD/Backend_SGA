@@ -1,10 +1,6 @@
 package com.sga.project.mapper;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Component;
-
 import com.sga.project.dto.UsuarioDto;
 import com.sga.project.models.Barrio;
 import com.sga.project.models.Rol;
@@ -13,7 +9,6 @@ import com.sga.project.models.Usuario;
 import com.sga.project.repositoryes.BarrioRepositoryes;
 import com.sga.project.repositoryes.RolRepositoryes;
 import com.sga.project.repositoryes.TipoDocRepositoryes;
-
 import jakarta.persistence.EntityNotFoundException;
 
 @Component class UsuarioMapperImplement implements UsuarioMapper {
@@ -76,32 +71,4 @@ import jakarta.persistence.EntityNotFoundException;
     return usuarioDto;
     }
 
-    @Override
-    public List<UsuarioDto> toUsuarioDtoList(List<Usuario> usuarios) {
-    if (usuarios == null) {
-        return List.of();
-        
-    }
-    List<UsuarioDto> list = new ArrayList<UsuarioDto>(usuarios.size());
-    for(Usuario Usuario : usuarios){
-        list.add(toUsuarioDto(Usuario));
-    }
-    return list;
-    }
-
-    @Override
-    public void updateUser(Usuario usuario, UsuarioDto usuarioDto) {
-    if (usuarioDto == null){
-        return;
-    }
-    usuario.setNumDoc(usuarioDto.getNumDocumento());
-    usuario.setDireccion(usuarioDto.getDire());
-    usuario.setNom1(usuarioDto.getNombre1());
-    usuario.setNom2(usuarioDto.getNombre2());
-    usuario.setApe1(usuarioDto.getApellido1());
-    usuario.setApe2(usuarioDto.getApellido2());
-    usuario.setNumTel(usuarioDto.getTele());
-    usuario.setCorreoElec(usuarioDto.getCorreoElectronico());
-    usuario.setContraseña(usuarioDto.getContra());
-    }
 }

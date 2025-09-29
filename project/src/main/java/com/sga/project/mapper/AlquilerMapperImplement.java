@@ -1,8 +1,5 @@
 package com.sga.project.mapper;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 import com.sga.project.dto.AlquilerDto;
@@ -15,6 +12,7 @@ import jakarta.persistence.EntityNotFoundException;
 @Component class AlquilermapperImplement implements AlquilerMapper{
 
     private final UsuarioRepositoryes usuRepo;
+
     public AlquilermapperImplement (UsuarioRepositoryes usuRepo) {
         this.usuRepo = usuRepo;
     }
@@ -29,11 +27,11 @@ import jakarta.persistence.EntityNotFoundException;
     alquiler.setFechaRet(alquilerDto.getFechaRetiro());
     alquiler.setFechaEnt(alquilerDto.getFechaEntrega());
     alquiler.setFechaAlq(alquiler.getFechaAlq());
-    
+
+
     Usuario usu = usuRepo.findById(alquilerDto.getNumDocUsuario())
     .orElseThrow(()-> new EntityNotFoundException("Usuario no encontrado"));
     alquiler.setUsuario(usu);
-
     return alquiler;
 
     }
@@ -43,29 +41,16 @@ import jakarta.persistence.EntityNotFoundException;
     if (alquiler == null){
         return null;
     }
-    return new AlquilerDto (
-        alquiler.getId(),
-        alquiler.getFechaAlq(),
-        alquiler.getFechaEnt(),
-        alquiler.getFechaRet(),
 
+    return new AlquilerDto(
+        alquiler.getId(),
+        alquiler.getFechaRet(),
+        alquiler.getFechaEnt(),
+        alquiler.getFechaAlq(),
         alquiler.getUsuario() != null ? alquiler.getUsuario().getNumDoc() : null
     );
-    }
-
-    @Override
-    public List<AlquilerDto> toAlquilerDtoList(List<Alquiler> alquiler) {
-    if (alquiler == null){
-        return List.of();
-    }
-    List <AlquilerDto> list = new ArrayList<AlquilerDto>(alquiler.size());
-    for(Alquiler Alquiler : alquiler){
-        list.add(toAlquilerDto(Alquiler));
-    }
-    return list;
 
     }
-
 
 }
 

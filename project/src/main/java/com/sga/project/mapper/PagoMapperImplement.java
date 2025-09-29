@@ -1,10 +1,6 @@
 package com.sga.project.mapper;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Component;
-
 import com.sga.project.dto.PagoDto;
 import com.sga.project.models.Pago;
 
@@ -36,27 +32,4 @@ import com.sga.project.models.Pago;
     return pagoDto;
 }
 
-    @Override
-    public List<PagoDto> toPagoDtoList(List<Pago> pagos) {
-    if (pagos == null) {
-        return List.of();
-    }
-    List <PagoDto> list = new ArrayList<>(pagos.size());
-    for(Pago Pago : pagos){
-        list.add(toPagoDto(Pago));
-    }
-    return list;
-    
-    }
-
-    @Override
-    public void updatePago(Pago pago, PagoDto pagoDto) {
-    if (pagoDto == null) {
-        return;
-    }
-    pago.setId_pago(pagoDto.getIdPago());
-    pago.setFechaUltimoAbono(pagoDto.getFechaUltimoAbono());
-    pago.setValorAbono(pagoDto.getValAbo());
-    
-    }
 }

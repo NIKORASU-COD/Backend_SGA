@@ -9,6 +9,5 @@ public interface ArticuloService {
 public ArticuloDto getArticuloById (Integer idArt);
 public ArticuloDto saveArticulo (ArticuloDto articuloDto);
 public List <ArticuloDto> getListArticulos ();
-void deleteArticulo (Integer Artid);
-public ArticuloDto updateArticulo (Integer articulo, ArticuloDto articuloDto);
+public void deleteArticulo (Integer idArt);
 }
