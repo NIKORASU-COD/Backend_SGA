@@ -13,4 +13,5 @@ public class PagoDto {
     private Integer idPago;
     private Integer fechaUltimoAbono;
     private Integer ValAbo;
+    private Integer idAlquiler;
 }

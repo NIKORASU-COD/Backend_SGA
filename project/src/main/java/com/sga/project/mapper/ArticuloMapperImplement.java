@@ -27,6 +27,7 @@ if (articuloDto == null){
     articulo.setColor(articuloDto.getColorArt());
     articulo.setNomArt(articuloDto.getNombre());
     articulo.setPrecio(articuloDto.getPrecioArt());
+    articulo.setFoto(articuloDto.getFotoArt());
 
     Categoria cate = cateRepo.findById(articuloDto.getIdCategoria())
         .orElseThrow(() -> new EntityNotFoundException("Categoria no encontrada"));
@@ -45,12 +46,12 @@ if (articuloDto == null){
     }
     return new ArticuloDto(
         articulo.getId(),
-        articulo.getColor(),
         articulo.getGenero(),
-        articulo.getNomArt(),
         articulo.getTalla(),
+        articulo.getColor(),
+        articulo.getNomArt(),
         articulo.getPrecio(),
-
+        articulo.getFoto(),
         articulo.getCategoria() != null ? articulo.getCategoria().getId_categoria() : null
     );
     }

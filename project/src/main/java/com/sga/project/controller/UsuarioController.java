@@ -1,19 +1,13 @@
 package com.sga.project.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.sga.project.dto.UsuarioDto;
-import com.sga.project.models.Usuario;
-import com.sga.project.repositoryes.UsuarioRepositoryes;
 import com.sga.project.service.UsuarioService;
-
 import jakarta.validation.Valid;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,22 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
-
 @RestController
 @RequestMapping("/api/usu")
 public class UsuarioController {
     @Autowired
-    private UsuarioRepositoryes ur;
-    @Autowired
     private UsuarioService us;
 
-    
-
-    @GetMapping("/usuarios")
-    public List<Usuario> usuarios() {
-        return ur.findAll();
-    }
     
 
     @PostMapping("/crear")
@@ -51,13 +35,13 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
     
-    @GetMapping("/{id}")
+    @GetMapping("ConsultarById/{id}")
     public ResponseEntity<UsuarioDto> buscarporid(@PathVariable Integer id){
         UsuarioDto usuarioDto = us.getUsuario(id);
         return ResponseEntity.ok(usuarioDto);
     }
 
-    @GetMapping("/listandoandoputos")
+    @GetMapping("/ConsultarUsuarios")
     public ResponseEntity<List<UsuarioDto>> listartodos(){
         return ResponseEntity.ok(us.getUsuarios());
     }

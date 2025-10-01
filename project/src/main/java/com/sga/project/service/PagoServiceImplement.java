@@ -1,53 +1,53 @@
 package com.sga.project.service;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.sga.project.dto.PagoDto;
 import com.sga.project.mapper.PagoMapper;
 import com.sga.project.models.Pago;
 import com.sga.project.repositoryes.PagoRepositoryes;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class PagoServiceImplement implements PagoService {
 
-    @Autowired
-    private PagoRepositoryes pr;
-    @Autowired
-    private PagoMapper pm;
+    private final PagoRepositoryes pr;
+    private final PagoMapper pm;
+
+    public PagoServiceImplement (PagoRepositoryes pr, PagoMapper pm) {
+        this.pm = pm;
+        this.pr = pr;
+    }
 
     @Override
-    public PagoDto getPago(Integer idPago) {
+    @Transactional (readOnly = true)
+    public PagoDto getPagoById(Integer idPago) {
     Pago pago = pr.findById(idPago).get();
     return pm.toPagoDto(pago);
     }
 
     @Override
+    @Transactional
     public PagoDto savePago(PagoDto pagoDto) {
     Pago pago = pm.toPago(pagoDto);
     return pm.toPagoDto(pr.save(pago));
     }
 
     @Override
-    public List<PagoDto> getPago() {
-    List <Pago> pagos = pr.findAll();
-    return (List<PagoDto>) pm.toPagoDtoList(pagos);
+    @Transactional(readOnly = true)
+    public List<PagoDto> getListPagos() {
+    return pr.findAll().stream()
+    .map(pm::toPagoDto).toList();
     }
 
     @Override
-    public PagoDto deletePago(Integer Pagoid) {
-    Pago pago = pr.findById(Pagoid).get();
-    pr.delete(pago); 
-    return  pm.toPagoDto(pago); 
+    public void deletePago(Integer pagoid) {
+    Pago pago = pr.findById(pagoid).orElseThrow(() -> new EntityNotFoundException("pago no encontrado por id: "+ pagoid));
+    pr.delete(pago);
     }
 
-    @Override
-    public PagoDto updatePago(Integer pago, PagoDto pagoDto) {
-    Pago pago2 = pr.findById(pago).get();
-    pm.updatePago(pago2, pagoDto);
-    return pm.toPagoDto(pr.save(pago2));
-    }
 
+    
 }

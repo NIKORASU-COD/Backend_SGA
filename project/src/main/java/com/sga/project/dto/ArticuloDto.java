@@ -15,5 +15,6 @@ public class ArticuloDto {
     private String colorArt;
     private String nombre;
     private Integer precioArt;
+    private String fotoArt;
     private Integer idCategoria;
 }

@@ -6,10 +6,10 @@ import com.sga.project.dto.PagoDto;
 
 public interface PagoService {
 
-public PagoDto getPago (Integer idPago);
+public PagoDto getPagoById (Integer idPago);
 public PagoDto savePago (PagoDto pagoDto);
-public List<PagoDto> getPago ();
-public void deletePago(Integer Pagoid);
-public PagoDto updatePago (PagoDto pagoDto);
+public List<PagoDto> getListPagos ();
+public void deletePago(Integer idPago);
+
 
 }

@@ -47,6 +47,8 @@ private String color;
 @Column (nullable = false)
 private Integer precio;
 
+private String foto;
+
 @ManyToOne (fetch = FetchType.LAZY)
 @JoinColumn (name = "id_categoria", nullable = false, foreignKey = @ForeignKey (name = "FK_articulo_categoria"))
 private Categoria categoria;
