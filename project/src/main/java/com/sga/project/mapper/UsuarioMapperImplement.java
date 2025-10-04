@@ -55,11 +55,9 @@ import jakarta.persistence.EntityNotFoundException;
     public UsuarioDto toUsuarioDto(Usuario usuario) {
     if (usuario == null) {
         return null;
-        
     }
     return new UsuarioDto(
         usuario.getNumDoc(),
-
         usuario.getNom1(),
         usuario.getNom2(),
         usuario.getApe1(),
@@ -69,9 +67,9 @@ import jakarta.persistence.EntityNotFoundException;
         usuario.getCorreoElec(),
         usuario.getContraseña(),
         usuario.getBarrio() != null ? usuario.getBarrio().getId_barrio() : null,
+        usuario.getBarrio() != null? usuario.getBarrio().getNomBar() : null,
         usuario.getRol() != null ? usuario.getRol().getId_rol() : null,
         usuario.getTipoDoc() != null ? usuario.getTipoDoc().getId_tipoDoc() : null
-        
     );
     }
 

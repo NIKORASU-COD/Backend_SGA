@@ -21,8 +21,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService us;
 
-    
-
     @PostMapping("/crear")
     public ResponseEntity<UsuarioDto> saveUsuario(@Valid @RequestBody UsuarioDto usuarioDto) {
         UsuarioDto guardalo = us.saveUsuario(usuarioDto);
