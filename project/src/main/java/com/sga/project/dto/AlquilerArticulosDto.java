@@ -16,9 +16,10 @@ private Integer alquilerId;
 @NotNull (message = "El ID del Articulo no puede estar vacío")
 private Integer articuloId;
 
+private String nomArticulo;
+
 private Boolean estado;
 
-@NotNull
 private Integer precio;
 
 private String observaciones;

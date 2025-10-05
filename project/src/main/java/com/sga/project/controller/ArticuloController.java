@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping ("/Articulos")
+@RequestMapping ("/api/articulos")
 public class ArticuloController {
 
     private final ArticuloService artiServi;

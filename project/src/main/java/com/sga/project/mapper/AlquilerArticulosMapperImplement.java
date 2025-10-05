@@ -3,6 +3,8 @@ package com.sga.project.mapper;
 import org.springframework.stereotype.Component;
 
 import com.sga.project.dto.AlquilerArticulosDto;
+import com.sga.project.dto.AlquilerAsignadoDto;
+import com.sga.project.dto.ArticuloAsignadoDto;
 import com.sga.project.models.Alquiler;
 import com.sga.project.models.AlquilerArticulos;
 import com.sga.project.models.AlquilerArticulosId;
@@ -25,34 +27,58 @@ public class AlquilerArticulosMapperImplement implements AlquilerArticuloMapper{
     }
     
     @Override
-    public AlquilerArticulos toEntity(AlquilerArticulosDto alquiArticuloDto) {
-        Articulo articulo = articuloRepo.findById(alquiArticuloDto.getArticuloId())
-        .orElseThrow(()-> new EntityNotFoundException("Artículo no encontrado"));
-        
-        Alquiler alquiler = alquilerRepo.findById(alquiArticuloDto.getAlquilerId())
-        .orElseThrow(()-> new EntityNotFoundException("Alquiler no encontrado"));
+    public AlquilerArticulos toAlquilerArticulos (AlquilerArticulosDto alquiArtiDto) {
+        Alquiler alqui = alquilerRepo.findById(alquiArtiDto.getAlquilerId())
+        .orElseThrow(() -> new EntityNotFoundException("Alquiler no encontrado"));
 
-        AlquilerArticulosId id = new AlquilerArticulosId(alquiArticuloDto.getArticuloId(), alquiArticuloDto.getAlquilerId());
+        Articulo arti = articuloRepo.findById(alquiArtiDto.getArticuloId()) 
+        .orElseThrow(() -> new EntityNotFoundException("Articulo no encontrado"));
 
-        AlquilerArticulos aa = new AlquilerArticulos();
-        aa.setId(id);
-        aa.setAlquiler(alquiler);
-        aa.setArticulo(articulo);
-        aa.setObservaciones(alquiArticuloDto.getObservaciones());
-        aa.setPrecio(alquiArticuloDto.getPrecio());
-        aa.setEstado(alquiArticuloDto.getEstado());
+        AlquilerArticulosId id = new AlquilerArticulosId(alquiArtiDto.getAlquilerId(), alquiArtiDto.getArticuloId());
 
-        return aa;
+        AlquilerArticulos alquiArti = new AlquilerArticulos();
+        alquiArti.setId(id);
+        alquiArti.setAlquiler(alqui);
+        alquiArti.setArticulo(arti);
+        alquiArti.setEstado(alquiArtiDto.getEstado());
+        alquiArti.setObservaciones(alquiArtiDto.getObservaciones());
+        alquiArti.setPrecio(alquiArtiDto.getPrecio());
+
+        return alquiArti;
+
     }
 
     @Override
-    public AlquilerArticulosDto toDto (AlquilerArticulos alquiArticulos) {
+    public AlquilerArticulosDto toAlquilerArticulosDto (AlquilerArticulos entity) {
         return new AlquilerArticulosDto(
-            alquiArticulos.getAlquiler().getId(),
-            alquiArticulos.getArticulo().getId(),
-            alquiArticulos.getEstado(),
-            alquiArticulos.getPrecio(),
-            alquiArticulos.getObservaciones()
+            entity.getAlquiler().getId(),
+            entity.getArticulo().getId(),
+            entity.getArticulo().getNomArt(),
+            entity.getEstado(),
+            entity.getArticulo().getPrecio(),
+            entity.getObservaciones()
         );
+    }
+
+    @Override
+    public ArticuloAsignadoDto toArticuloAsignadoDto (AlquilerArticulos alquiArtiEntity) {
+        ArticuloAsignadoDto asigDto = new ArticuloAsignadoDto();
+        asigDto.setArticuloId(alquiArtiEntity.getArticulo().getId());
+        asigDto.setNomArticulo(alquiArtiEntity.getArticulo().getNomArt());
+        asigDto.setPrecioArticulo(alquiArtiEntity.getArticulo().getPrecio());
+        asigDto.setTallaArticulo(alquiArtiEntity.getArticulo().getTalla());
+
+        return asigDto;
+    }
+
+    @Override
+    public AlquilerAsignadoDto toAlquilerAsignadoDto (AlquilerArticulos alquiArtiEntity) {
+        AlquilerAsignadoDto asigDto = new AlquilerAsignadoDto();
+        asigDto.setAlquilerId(alquiArtiEntity.getAlquiler().getId());
+        asigDto.setFechaAlqui(alquiArtiEntity.getAlquiler().getFechaAlq());
+        asigDto.setFechaEntrega(alquiArtiEntity.getAlquiler().getFechaEnt());
+        asigDto.setFechaRetiro(alquiArtiEntity.getAlquiler().getFechaRet());
+
+        return asigDto;
     }
 }
