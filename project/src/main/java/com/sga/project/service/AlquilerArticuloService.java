@@ -14,4 +14,6 @@ public interface AlquilerArticuloService {
     List<AlquilerArticulosDto> listarPorArticulo (Integer articuloId);
 
     void eliminarAsignacion (Integer ArticuloId, Integer alquilerId);
+
+    List<AlquilerArticulosDto> listarAlquileres ();
 }

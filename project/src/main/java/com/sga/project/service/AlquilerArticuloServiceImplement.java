@@ -62,4 +62,8 @@ public void eliminarAsignacion (Integer articuloId, Integer alquilerId){
     alquiArtiRepo.deleteById(id);
 }
 
+@Override
+public List<AlquilerArticulosDto> listarAlquileres() {
+    return alquiArtiRepo.findAll().stream().map(alquiArtiMap::toAlquilerArticulosDto).toList();
+}
 }

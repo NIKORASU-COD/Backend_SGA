@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-@RequestMapping ("/api/ArticulosAlquiler")
+@RequestMapping ("/api/AlquilerArticulos")
 public class AlquilerArticuloController {
 
     private final AlquilerArticuloService alquiArtiServi;
@@ -55,6 +55,14 @@ public class AlquilerArticuloController {
         return ResponseEntity.noContent().build();
         
     }
+    
+    @GetMapping
+    public ResponseEntity<List<AlquilerArticulosDto>> listarTodos() {
+        return ResponseEntity.ok(alquiArtiServi.listarAlquileres());
+    }
+
+
+
     }
     
     

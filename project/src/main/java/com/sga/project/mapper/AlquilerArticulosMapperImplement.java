@@ -54,6 +54,10 @@ public class AlquilerArticulosMapperImplement implements AlquilerArticuloMapper{
             entity.getAlquiler().getId(),
             entity.getArticulo().getId(),
             entity.getArticulo().getNomArt(),
+            entity.getArticulo().getTalla(),
+            entity.getAlquiler().getUsuario().getNom1() + " " + entity.getAlquiler().getUsuario().getApe1() + " " + entity.getAlquiler().getUsuario().getApe2(),
+            entity.getAlquiler().getUsuario().getNumTel(),
+            entity.getAlquiler().getFechaEnt(),
             entity.getEstado(),
             entity.getArticulo().getPrecio(),
             entity.getObservaciones()
