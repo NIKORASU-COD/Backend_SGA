@@ -52,7 +52,8 @@ if (articuloDto == null){
         articulo.getNomArt(),
         articulo.getPrecio(),
         articulo.getFoto(),
-        articulo.getCategoria() != null ? articulo.getCategoria().getId_categoria() : null
+        articulo.getCategoria() != null ? articulo.getCategoria().getId_categoria() :null,
+        articulo.getCategoria() != null ? articulo.getCategoria().getNomCate() : null
     );
     }
 

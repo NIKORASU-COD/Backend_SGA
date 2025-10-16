@@ -70,4 +70,16 @@ public class ArticuloController {
         ArticuloDto artiActualizado = artiServi.updateArticulo(artiUpDto);
         return ResponseEntity.ok(artiActualizado);
     }
+
+    @GetMapping ("ConsultarByName/{nomArt}")
+    public ResponseEntity<List<ArticuloDto>> buscarPorNombre (@PathVariable String nomArt) {
+        List<ArticuloDto> articulos = artiServi.getArticulosByName(nomArt);
+        return ResponseEntity.ok(articulos);
+    }
+    
+    @GetMapping ("ConsultarByCate/{nomCate}")
+    public ResponseEntity<List<ArticuloDto>> buscaPorCate (@PathVariable String nomCate) {
+        List<ArticuloDto> articulosCate = artiServi.getArticulosByCate(nomCate);
+        return ResponseEntity.ok(articulosCate);
+    }
 }

@@ -17,4 +17,5 @@ public class ArticuloDto {
     private Integer precioArt;
     private String fotoArt;
     private Integer idCategoria;
+    private String nomCate;
 }

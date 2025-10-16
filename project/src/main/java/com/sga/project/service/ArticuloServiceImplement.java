@@ -1,6 +1,7 @@
 package com.sga.project.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import com.sga.project.dto.ArticuloDto;
 import com.sga.project.dto.ArticuloUpdateDto;
@@ -60,5 +61,26 @@ public ArticuloDto updateArticulo (ArticuloUpdateDto artiUpdateDto) {
 
     Articulo artiActualizado = artiRepo.save(art);
     return artiMap.toArticuloDto(artiActualizado);
+}
+
+@Override
+public List<ArticuloDto> getArticulosByName (String nomArt) {
+    List<Articulo> arti = artiRepo.findByNomArtContainingIgnoringCase(nomArt);
+    if (arti.isEmpty()) {
+        throw new EntityNotFoundException("No se encontraron articulos por el nombre: " + nomArt );
+    }
+    return arti.stream().map(artiMap::toArticuloDto).collect(Collectors.toList());
+}
+
+@Override 
+public List<ArticuloDto> getArticulosByCate (String nomCate) {
+    List<Articulo> articulo = artiRepo.findByCategoriaNomCateContainingIgnoringCase(nomCate);
+    if (articulo.isEmpty()) {
+        throw new EntityNotFoundException("No hay articlos existentes con esta categoria: " + articulo);
+        
+    }
+
+    return articulo.stream().map(artiMap:: toArticuloDto).collect(Collectors.toList());
+
 }
 }
