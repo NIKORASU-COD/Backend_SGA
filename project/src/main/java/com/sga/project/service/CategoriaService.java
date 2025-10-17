@@ -9,6 +9,4 @@ public interface CategoriaService {
     public CategoriaDto saveCategoria (CategoriaDto categoriaDto);
     public List <CategoriaDto> getCategoria ();
     public void deleteCategoria (Integer id_categoria);
-    public CategoriaDto updateCategoria (CategoriaDto categoriaDto);
-
 }

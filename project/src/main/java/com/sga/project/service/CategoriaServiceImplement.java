@@ -55,19 +55,10 @@ public class CategoriaServiceImplement implements CategoriaService {
         cr.delete(categoria);
     }
 
-    @Override
-    @Transactional
-    public CategoriaDto updateCategoria(CategoriaDto categoriaDto) {
-        Categoria categoria = cr.findById(categoriaDto.getIdCate())
-        .orElseThrow(() -> new EntityNotFoundException("Categoria no encontrada"));
 
-        categoria.setId_categoria(categoriaDto.getIdCate());
-        categoria.setNomCate(categoriaDto.getNomCate());
-        Categoria catActualizado = cr.save(categoria);
-        return cm.toCategoriaDto(catActualizado);
 
     }
     
 
 
-}
+
