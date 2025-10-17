@@ -19,7 +19,7 @@ public class UsuarioDto {
     private String correoElectronico;
     private String contra;
     private Integer idBarrio;
+    private String nomBar;
     private Integer idTipoDoc;
     private Integer idRol;
-
 }

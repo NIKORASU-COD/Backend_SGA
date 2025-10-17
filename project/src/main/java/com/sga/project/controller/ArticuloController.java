@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.sga.project.dto.ArticuloDto;
+import com.sga.project.dto.ArticuloUpdateDto;
 import com.sga.project.service.ArticuloService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
 @RestController
-@RequestMapping ("/Articulos")
+@RequestMapping ("/api/articulos")
 public class ArticuloController {
 
     private final ArticuloService artiServi;
@@ -28,7 +31,7 @@ public class ArticuloController {
     }
 
     //Crear artículo
-    @PostMapping("/CrearArticulo")
+    @PostMapping("/Crear")
     public ResponseEntity <?> crear (@Valid @RequestBody ArticuloDto articuloDto){
         try {
             ArticuloDto crearlo = artiServi.saveArticulo(articuloDto);
@@ -43,7 +46,7 @@ public class ArticuloController {
         }
     };
 
-    @GetMapping("/ConsultarArticulos")
+    @GetMapping
     public ResponseEntity<List<ArticuloDto>> listarArticulos() {
         List<ArticuloDto> articulos = artiServi.getListArticulos();
         return ResponseEntity.ok(articulos);
@@ -60,11 +63,24 @@ public class ArticuloController {
         ArticuloDto artiDto = artiServi.getArticuloById(id);
         return ResponseEntity.ok(artiDto);
     }
+
+    @PutMapping("Actualizar/{id}")
+    public ResponseEntity<ArticuloDto> actualizarArticulo (@PathVariable Integer id, @Valid @RequestBody ArticuloUpdateDto artiUpDto) {
+        artiUpDto.setIdArt(id);
+        ArticuloDto artiActualizado = artiServi.updateArticulo(artiUpDto);
+        return ResponseEntity.ok(artiActualizado);
+    }
+
+
+    @GetMapping ("ConsultarByName/{nomArt}")
+    public ResponseEntity<List<ArticuloDto>> buscarPorNombre (@PathVariable String nomArt) {
+        List<ArticuloDto> articulos = artiServi.getArticulosByName(nomArt);
+        return ResponseEntity.ok(articulos);
     }
     
-
-
-    
-    
-
-
+    @GetMapping ("ConsultarByCate/{nomCate}")
+    public ResponseEntity<List<ArticuloDto>> buscaPorCate (@PathVariable String nomCate) {
+        List<ArticuloDto> articulosCate = artiServi.getArticulosByCate(nomCate);
+        return ResponseEntity.ok(articulosCate);
+    }
+}

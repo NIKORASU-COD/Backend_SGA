@@ -28,11 +28,11 @@ import jakarta.persistence.EntityNotFoundException;
     }
     Usuario usuario = new Usuario();
     usuario.setNumDoc(usuarioDto.getNumDocumento());
-    usuario.setDireccion(usuarioDto.getDire());
     usuario.setNom1(usuarioDto.getNombre1());
     usuario.setNom2(usuarioDto.getNombre2());
     usuario.setApe1(usuarioDto.getApellido1());
     usuario.setApe2(usuarioDto.getApellido2());
+    usuario.setDireccion(usuarioDto.getDire());
     usuario.setNumTel(usuarioDto.getTele());
     usuario.setCorreoElec(usuarioDto.getCorreoElectronico());
     usuario.setContraseña(usuarioDto.getContra());
@@ -55,20 +55,22 @@ import jakarta.persistence.EntityNotFoundException;
     public UsuarioDto toUsuarioDto(Usuario usuario) {
     if (usuario == null) {
         return null;
-        
     }
-    UsuarioDto usuarioDto = new UsuarioDto();
-    usuarioDto.setNumDocumento(usuario.getNumDoc());
-    usuarioDto.setDire(usuario.getDireccion());
-    usuarioDto.setNombre1(usuario.getNom1());
-    usuarioDto.setNombre2(usuario.getNom2());
-    usuarioDto.setApellido1(usuario.getApe1());
-    usuarioDto.setApellido2(usuario.getApe2());
-    usuarioDto.setTele(usuario.getNumTel());
-    usuarioDto.setCorreoElectronico(usuario.getCorreoElec());
-
-    usuarioDto.setContra(usuario.getContraseña());
-    return usuarioDto;
+    return new UsuarioDto(
+        usuario.getNumDoc(),
+        usuario.getNom1(),
+        usuario.getNom2(),
+        usuario.getApe1(),
+        usuario.getApe2(),
+        usuario.getDireccion(),
+        usuario.getNumTel(),
+        usuario.getCorreoElec(),
+        usuario.getContraseña(),
+        usuario.getBarrio() != null ? usuario.getBarrio().getId_barrio() : null,
+        usuario.getBarrio() != null? usuario.getBarrio().getNomBar() : null,
+        usuario.getRol() != null ? usuario.getRol().getId_rol() : null,
+        usuario.getTipoDoc() != null ? usuario.getTipoDoc().getId_tipoDoc() : null
+    );
     }
 
 }

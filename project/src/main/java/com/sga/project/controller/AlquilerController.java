@@ -1,5 +1,17 @@
 package com.sga.project.controller;
 
+
+import java.util.List;
+import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,24 +22,10 @@ import com.sga.project.service.AlquilerService;
 
 import jakarta.validation.Valid;
 
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
-
 
 @RestController
-@RequestMapping("/Alquiler")
-public class AlquilerController {
+@RequestMapping("api/alquiler")
+    public class AlquilerController {
 
     private final AlquilerService alquiServi;
     private final AlquilerRepositoryes alquiRep;
@@ -69,5 +67,14 @@ public class AlquilerController {
         alquiServi.deleteAlquiler(id);
         return ResponseEntity.noContent().build();
     }
-    
+
+
+    @PutMapping ("Actualizar/{id}")
+    public ResponseEntity<AlquilerDto> actualizarAlquiler(@PathVariable Integer id, @Valid @RequestBody AlquilerDto alquilerDto) {
+        alquilerDto.setId_alquiler(id);
+        AlquilerDto alquilerActualizado = alquiServi.updateAlquiler(alquilerDto);
+        return ResponseEntity.ok(alquilerActualizado);
+    }
+
+
 }
