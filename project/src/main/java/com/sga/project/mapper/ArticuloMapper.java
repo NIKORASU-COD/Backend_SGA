@@ -8,4 +8,5 @@ public interface ArticuloMapper {
     Articulo toArticulo (ArticuloDto articuloDto);
     ArticuloDto toArticuloDto (Articulo articulo);
 
+
 }

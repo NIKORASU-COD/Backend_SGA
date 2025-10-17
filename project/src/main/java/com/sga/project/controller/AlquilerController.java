@@ -1,5 +1,6 @@
 package com.sga.project.controller;
 
+
 import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +26,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("api/alquiler")
     public class AlquilerController {
+
     private final AlquilerService alquiServi;
     private final AlquilerRepositoryes alquiRep;
 
@@ -65,11 +68,13 @@ import jakarta.validation.Valid;
         return ResponseEntity.noContent().build();
     }
 
+
     @PutMapping ("Actualizar/{id}")
     public ResponseEntity<AlquilerDto> actualizarAlquiler(@PathVariable Integer id, @Valid @RequestBody AlquilerDto alquilerDto) {
         alquilerDto.setId_alquiler(id);
         AlquilerDto alquilerActualizado = alquiServi.updateAlquiler(alquilerDto);
         return ResponseEntity.ok(alquilerActualizado);
     }
+
 
 }

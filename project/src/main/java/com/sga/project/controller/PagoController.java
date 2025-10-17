@@ -1,5 +1,7 @@
 package com.sga.project.controller;
 
+
+
 import java.util.List;
 import java.util.Map;
 
@@ -50,6 +52,7 @@ public class PagoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(Map.of("error", "Error al añadir un pago","detalle", ex.getMessage()));
         }
+
     }
 
 @GetMapping("/ConsultarById")
@@ -68,3 +71,4 @@ public List<PagoDto> getListPagos () {
         pagoRepo.delete(pago);
     }
 }
+

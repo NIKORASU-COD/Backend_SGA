@@ -71,6 +71,7 @@ public class ArticuloController {
         return ResponseEntity.ok(artiActualizado);
     }
 
+
     @GetMapping ("ConsultarByName/{nomArt}")
     public ResponseEntity<List<ArticuloDto>> buscarPorNombre (@PathVariable String nomArt) {
         List<ArticuloDto> articulos = artiServi.getArticulosByName(nomArt);

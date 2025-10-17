@@ -68,7 +68,6 @@ public void deleteUsuario (Integer numDoc) {
 public UsuarioDto updateUsuario (UsuarioDto usuarioDto) {
     Usuario usu = usuRepo.findById(usuarioDto.getNumDocumento())
     .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
-
     usu.setApe1(usuarioDto.getApellido1());
     usu.setApe2(usuarioDto.getApellido2());
     usu.setContraseña(usuarioDto.getContra());

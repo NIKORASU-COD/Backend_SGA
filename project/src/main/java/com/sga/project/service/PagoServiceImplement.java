@@ -10,6 +10,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class PagoServiceImplement implements PagoService {
 
@@ -37,6 +39,7 @@ public class PagoServiceImplement implements PagoService {
 
     @Override
     @Transactional(readOnly = true)
+
     public List<PagoDto> getListPagos() {
     return pr.findAll().stream()
     .map(pm::toPagoDto).toList();
@@ -46,8 +49,5 @@ public class PagoServiceImplement implements PagoService {
     public void deletePago(Integer pagoid) {
     Pago pago = pr.findById(pagoid).orElseThrow(() -> new EntityNotFoundException("pago no encontrado por id: "+ pagoid));
     pr.delete(pago);
-    }
-
-
-    
+    } 
 }
